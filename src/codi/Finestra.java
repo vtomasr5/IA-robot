@@ -130,8 +130,8 @@ public class Finestra extends JPanel {
             }
         } else {
             velocitat += 100;
-            if (velocitat >= 2000) {
-                velocitat = 2000; 
+            if (velocitat >= 1500) {
+                velocitat = 1500; 
             }
         }
     }
@@ -189,12 +189,10 @@ public class Finestra extends JPanel {
                         } else {
                             rob.setPos(rob.getPosx(), rob.getPosy() - 1);
                         }
-                        movAnt = 'E'; // 'N' abans. 'E' per a que si amollam en wall-e a sa columna de la dreta no s'en vagi sempre al nord.
+                        movAnt = 'N'; // 'N' abans. 'E' per a que si amollam en wall-e a sa columna de la dreta no s'en vagi sempre al nord.
                     }
-                    
                     analitzarSensors();
-                    
-                    rob.visualitzaSensors();                    
+//                    rob.visualitzaSensors();                    
                 }
                 veureMapa();
             }
@@ -292,6 +290,7 @@ public class Finestra extends JPanel {
         } else {
             matriuSensors[1][0].setBackground(Color.white);
         }
+        
         matriuSensors[0][0].setText("0");
         matriuSensors[1][0].setText("7");
         matriuSensors[2][0].setText("6");
