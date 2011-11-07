@@ -47,9 +47,9 @@ public class BotonsListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         JButton boton = (JButton) ae.getSource();
-        if (boton.getText().equals("Reiniciar")) {
+        if (boton.getText().equals("Reset")) {
             inter.reiniciar();
-        } else if (boton.getText().equals("Reset Robot")) {
+        } else if (boton.getText().equals("Reset robot")) {
             inter.reiniciarRobot();
         } else if (boton.getText().equals("Pausar")) {
             boton.setText("Reanudar");
@@ -76,7 +76,7 @@ public class BotonsListener implements ActionListener {
         } else if (boton.getText().equals("Informació")) {
             JOptionPane.showMessageDialog(null, "Autor: Vicenç Juan Tomàs Montserrat\nLlicència: GPLv3\nVersió: 1.0","Informació", JOptionPane.INFORMATION_MESSAGE);
         } else if (boton.getText().equals("Manual")) {
-            JOptionPane.showMessageDialog(null, "Funciona amb el ratolí.\nBOTÓ ESQUERRA: insertar herba (paret)\nBOTÓ DRET: iniciar el robot\nBOTÓ DE LA RODETA: eliminar herba\n","Funcionament", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Funciona amb el ratolí.\nBOTÓ ESQUERRA: insertar herba (paret)\nBOTÓ DRET: iniciar el robot\nBOTÓ DE LA RODETA: eliminar herba\n","Funcionament", JOptionPane.PLAIN_MESSAGE);
         }
     }
 }

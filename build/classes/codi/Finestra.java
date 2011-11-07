@@ -85,7 +85,7 @@ public class Finestra extends JPanel {
     }
     
     public void reiniciarRobot() {
-        if ((rob.getPosx() != -1) && (rob.getPosy() != -1)) {
+        if (rob != null) {
             caselles[0][0].resetRobot();
             rob.setPos(-1, -1);
             aturar = true;
@@ -406,39 +406,46 @@ public class Finestra extends JPanel {
     private void initComponents() {
         setLayout(null);
         setBackground(new java.awt.Color(0, 0, 0));
-        setPreferredSize(new java.awt.Dimension(651, 501));
+        setPreferredSize(new java.awt.Dimension(641, 501));
 
         JPanel panell = new JPanel();
 
-        JButton btreiniciar = new JButton("Reiniciar");
-        JButton btresetRobot = new JButton("Reset Robot");
+        JButton btreiniciar = new JButton("Reset");
+        btreiniciar.setPreferredSize(new Dimension(110, 25));
+        
+        JButton btresetRobot = new JButton("Reset robot");
+        btresetRobot.setPreferredSize(new Dimension(110, 25));
         JButton btpausar = new JButton("Pausar");
+        btpausar.setPreferredSize(new Dimension(110, 25));
   
-        JLabel label7 = new JLabel("");
+        JLabel lblespai = new JLabel("");
+        JLabel lblespai2 = new JLabel("");
         JButton botoMesVelocitat = new JButton("+ velocitat");
+        botoMesVelocitat.setPreferredSize(new Dimension(110, 25));
         JButton botoMenysVelocitat = new JButton("- velocitat");
+        botoMenysVelocitat.setPreferredSize(new Dimension(110, 25));        
         
         JButton botoInfo = new JButton("Informació");
+        botoInfo.setPreferredSize(new Dimension(110, 25));
+
         JButton botoFun = new JButton("Manual");
+        botoFun.setPreferredSize(new Dimension(110, 25));        
+        
         botoInfo.addActionListener(new BotonsListener(this));
         botoInfo.setFocusable(false);
         botoFun.addActionListener(new BotonsListener(this));
         botoFun.setFocusable(false);        
-
-        botoMesVelocitat.setBounds(new Rectangle(107, 50, 105, 45));
-        botoMenysVelocitat.setBounds(new Rectangle(100, 50, 105, 50));
-        
-        btreiniciar.setBounds(new Rectangle(107, 50, 102, 41));
-        btpausar.setBounds(new Rectangle(107, 50, 102, 41));
         
         JLabel label = new JLabel("Estat sensors: ");
         
-        label.setPreferredSize(new Dimension(100, 40));
-        panell.add(btreiniciar, BorderLayout.SOUTH);
-        panell.add(btresetRobot, BorderLayout.SOUTH);
-        panell.add(btpausar, BorderLayout.SOUTH);
-        panell.add(botoMenysVelocitat, BorderLayout.SOUTH);
-        panell.add(botoMesVelocitat, BorderLayout.SOUTH);
+        label.setPreferredSize(new Dimension(100, 20));
+        lblespai2.setPreferredSize(new Dimension(100, 10));
+        panell.add(btreiniciar);
+        panell.add(btresetRobot);
+        panell.add(btpausar);
+        panell.add(botoMenysVelocitat);
+        panell.add(botoMesVelocitat);
+        panell.add(lblespai2);
         panell.add(label);
         
         // matriu dels estats dels sensors
@@ -454,12 +461,13 @@ public class Finestra extends JPanel {
         matriuSensors[1][1].setVisible(false);
         
         panell.add(panel2);
-        label7.setPreferredSize(new Dimension(100, 15));
-        panell.add(label7);
-        panell.add(botoFun, BorderLayout.SOUTH);
-        panell.add(botoInfo, BorderLayout.SOUTH);
         
-        panell.setSize(150, 500);
+        lblespai.setPreferredSize(new Dimension(100, 10));
+        panell.add(lblespai);
+        panell.add(botoFun);
+        panell.add(botoInfo);
+        
+        panell.setSize(140, 500);
         panell.setLocation(502, 0);
         add(panell);
 
