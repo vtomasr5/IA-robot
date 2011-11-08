@@ -1,5 +1,5 @@
 /*
- * Finestra.java
+ * Taulell.java
  * 
  * Copyright (C) 2011 Vicenç Juan Tomàs Monserrat
  * 
@@ -18,8 +18,9 @@ import java.awt.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
+import javax.swing.border.EtchedBorder;
 
-public class Finestra extends JPanel {
+public class Taulell extends JPanel {
 
     private ImageIcon enterra, paret, robot;
     private JTextField[][] matriuSensors;
@@ -30,11 +31,11 @@ public class Finestra extends JPanel {
     private boolean aturar, sortir;
     protected Robot rob;
 
-    public Finestra() {
+    public Taulell() {
         initComponents();
     }
 
-    public Finestra(int size, boolean tipo) {
+    public Taulell(int size, boolean tipo) {
         initComponents();
         int x, y;
         this.tamany = size;
@@ -148,7 +149,7 @@ public class Finestra extends JPanel {
             try {
                 Thread.sleep(10); // velocitat en que s'executa l'acció
             } catch (InterruptedException ex) {
-                Logger.getLogger(Finestra.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Taulell.class.getName()).log(Level.SEVERE, null, ex);
             }
             while (!aturar) {
                 if (rob.getPosx() != -1 && rob.getPosy() != -1) {
@@ -192,7 +193,6 @@ public class Finestra extends JPanel {
                         movAnt = 'N'; // 'N' abans. 'E' per a que si amollam en wall-e a sa columna de la dreta no s'en vagi sempre al nord.
                     }
                     analitzarSensors();
-//                    rob.visualitzaSensors();                    
                 }
                 veureMapa();
             }
@@ -334,7 +334,7 @@ public class Finestra extends JPanel {
             this.repaint();
             Thread.sleep(velocitat); // control de la velocitat d'en Wall-e
         } catch (InterruptedException ex) {
-            Logger.getLogger(Finestra.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Taulell.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -358,13 +358,13 @@ public class Finestra extends JPanel {
     }
 
     private void carregarImatges() {
-        this.enterra = Finestra.carregarFons("img/terra.jpg");
-        this.paret = Finestra.carregarFons("img/herba.jpg");
-        this.robot = Finestra.carregarFons("img/wall-e.png");
+        this.enterra = Taulell.carregarFons("img/terra.jpg");
+        this.paret = Taulell.carregarFons("img/herba.jpg");
+        this.robot = Taulell.carregarFons("img/wall-e.png");
     }
 
     protected static ImageIcon carregarFons(String ruta) {
-        java.net.URL localizacion = Finestra.class.getResource(ruta);
+        java.net.URL localizacion = Taulell.class.getResource(ruta);
         if (localizacion != null) {
             return new ImageIcon(localizacion);
         } else {

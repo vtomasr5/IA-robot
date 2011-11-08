@@ -25,23 +25,11 @@ import javax.swing.event.ChangeListener;
 
 public class BotonsListener implements ActionListener {
 
-    private Finestra inter;
+    private Taulell inter;
     private boolean pausa = false;
 
-    public BotonsListener(Finestra t) {
+    public BotonsListener(Taulell t) {
         this.inter = t;
-    }
-
-    public void mouseClicked(MouseEvent e) {
-    }
-
-    public void mouseEntered(MouseEvent e) {
-    }
-
-    public void mouseExited(MouseEvent e) {
-    }
-
-    public void mouseReleased(MouseEvent e) {
     }
 
     @Override

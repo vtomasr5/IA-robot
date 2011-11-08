@@ -20,7 +20,7 @@ import javax.swing.*;
 
 public class Caselles extends JPanel implements MouseListener {
 
-    private Finestra taulell;
+    private Taulell taulell;
     private ImageIcon imgFons;
     private static int[] casellaMarcada = new int[2];
     private static boolean iniciarRobot = false;
@@ -29,7 +29,7 @@ public class Caselles extends JPanel implements MouseListener {
     public Caselles() {
     }
 
-    public Caselles(Finestra t) {
+    public Caselles(Taulell t) {
         initComponents();
         ocupada = false;
         this.taulell = t;

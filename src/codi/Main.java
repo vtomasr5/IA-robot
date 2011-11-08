@@ -18,7 +18,7 @@ import javax.swing.*;
 
 public class Main extends JFrame {
     
-    private Finestra taulell;
+    private Taulell taulell;
 
     public Main() {
         initComponents();
@@ -30,7 +30,6 @@ public class Main extends JFrame {
         
         if (osname.equals("linux")) {
             lookAndFeel = "com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel";
-//            lookAndFeel = "com.sun.java.swing.plaf.gtk.GTKLookAndFeel";
         } else if (osname.startsWith("windows")) {
             lookAndFeel = "com.sun.java.swing.plaf.windows.WindowsLookAndFeel";
         } else if (osname.startsWith("mac")) {
@@ -51,8 +50,7 @@ public class Main extends JFrame {
     }    
 
     private void initComponents() {
-
-        taulell = new Finestra(10, true);
+        taulell = new Taulell(10, true);
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         GroupLayout taulellLauout = new GroupLayout(taulell);
 
