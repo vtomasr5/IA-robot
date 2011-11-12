@@ -139,7 +139,7 @@ public class Taulell extends JPanel {
 
     public void accio() {
         // movAnt: estat intern o anterior
-        char movAnt = 'E'; // N abans
+        char movAnt = 'E'; // N
         aturar = false;
         sortir = false;
         
@@ -157,40 +157,48 @@ public class Taulell extends JPanel {
                     if (((rob.getSensor(0) == 1 || rob.getSensor(7) == 1) && rob.getSensor(1) == 0)
                             && !(rob.getSensor(0) == 1 && rob.getSensor(6) == 1 && rob.getSensor(7) == 0 && movAnt == 'N')
                             && (movAnt == 'N' || movAnt == 'E' || (movAnt == 'O' && rob.getSensor(5) == 1 && rob.getSensor(7) == 1) || (movAnt == 'S' && rob.getSensor(3) == 1 && rob.getSensor(5) == 1 && rob.getSensor(7) == 1))) {
-                        rob.setPos(rob.getPosx(), rob.getPosy() - 1); // NORTE
-                        System.out.println("NORTE");
+                        rob.setPos(rob.getPosx(), rob.getPosy() - 1); // NORD
+                        System.out.println("NORD");
                         movAnt = 'N';
 
                     } else if (((rob.getSensor(1) == 1 || rob.getSensor(2) == 1) && rob.getSensor(3) == 0)
                             && !(rob.getSensor(0) == 1 && rob.getSensor(2) == 1 && rob.getSensor(1) == 0 && movAnt == 'E')
                             && !(rob.getSensor(1) == 1 && rob.getSensor(6) == 1 && rob.getSensor(7) == 0 && movAnt == 'N')
                             && (movAnt == 'E' || movAnt == 'S' || (movAnt == 'N' && rob.getSensor(1) == 1) || (movAnt == 'N' && rob.getSensor(2) == 1 && rob.getSensor(6) == 0) || (movAnt == 'O' && rob.getSensor(5) == 1 && rob.getSensor(7) == 1))) {
-                        rob.setPos(rob.getPosx() + 1, rob.getPosy()); // ESTE
-                        System.out.println("ESTE");
+                        rob.setPos(rob.getPosx() + 1, rob.getPosy()); // EST
+                        System.out.println("EST");
                         movAnt = 'E';
 
                     } else if (((rob.getSensor(3) == 1 || rob.getSensor(4) == 1) && rob.getSensor(5) == 0)
                             && !(rob.getSensor(2) == 1 && rob.getSensor(4) == 1 && rob.getSensor(3) == 0 && movAnt == 'S')
                             && (movAnt == 'O' || movAnt == 'S' || (movAnt == 'E' && rob.getSensor(3) == 1) || (movAnt == 'N' && rob.getSensor(1) == 1 && rob.getSensor(7) == 1))) {
-                        rob.setPos(rob.getPosx(), rob.getPosy() + 1); // SUR
-                        System.out.println("SUR");
+                        rob.setPos(rob.getPosx(), rob.getPosy() + 1); // SUD
+                        System.out.println("SUD");
                         movAnt = 'S';
 
                     } else if (((rob.getSensor(5) == 1 || rob.getSensor(6) == 1) && rob.getSensor(7) == 0)
                             && !(rob.getSensor(4) == 1 && rob.getSensor(6) == 1 && rob.getSensor(5) == 0 && movAnt == 'O')
                             && (movAnt == 'N' || movAnt == 'O' || (movAnt == 'S' && rob.getSensor(5) == 1) || (movAnt == 'E' && rob.getSensor(3) == 1))) {
-                        rob.setPos(rob.getPosx() - 1, rob.getPosy()); // OESTE
-                        System.out.println("OESTE");
+                        rob.setPos(rob.getPosx() - 1, rob.getPosy()); // OEST
+                        System.out.println("OEST");
                         movAnt = 'O';
-
-                    } else {
-                        if (rob.getSensor(0) == 1 && rob.getSensor(1) == 1 && rob.getSensor(2) == 1 && rob.getSensor(3) == 1
-                                && rob.getSensor(4) == 1 && rob.getSensor(5) == 1 && rob.getSensor(6) == 1 && rob.getSensor(7) == 1) {
-                            aturar = true;
-                        } else {
-                            rob.setPos(rob.getPosx(), rob.getPosy() - 1);
-                        }
-                        movAnt = 'N'; // 'N' abans. 'E' per a que si amollam en wall-e a sa columna de la dreta no s'en vagi sempre al nord.
+                        
+                    // casos en que totes les possibilitats de moviment estan tancades
+                    } else if ((rob.getSensor(1) == 1 && rob.getSensor(3) == 1 && rob.getSensor(5) == 1 && rob.getSensor(7) == 1)
+                            && (rob.getSensor(0) == 1 || rob.getSensor(2) == 0 || rob.getSensor(4) == 0 || rob.getSensor(6) == 0)
+                            && (rob.getSensor(0) == 0 || rob.getSensor(2) == 1 || rob.getSensor(4) == 0 || rob.getSensor(6) == 0)
+                            && (rob.getSensor(0) == 0 || rob.getSensor(2) == 0 || rob.getSensor(4) == 1 || rob.getSensor(6) == 0)
+                            && (rob.getSensor(0) == 0 || rob.getSensor(2) == 0 || rob.getSensor(4) == 0 || rob.getSensor(6) == 1)) {
+                        aturar = true;
+                        
+                    } else { 
+//                        if (rob.getSensor(0) == 1 && rob.getSensor(1) == 1 && rob.getSensor(2) == 1 && rob.getSensor(3) == 1
+//                         && rob.getSensor(4) == 1 && rob.getSensor(5) == 1 && rob.getSensor(6) == 1 && rob.getSensor(7) == 1) {
+//                            aturar = true;
+//                        }else {
+                        rob.setPos(rob.getPosx(), rob.getPosy() - 1);
+//                        }
+                        movAnt = 'N'; // N abans.
                     }
                     analitzarSensors();
                 }
