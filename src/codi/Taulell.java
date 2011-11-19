@@ -18,7 +18,6 @@ import java.awt.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
-import javax.swing.border.EtchedBorder;
 
 public class Taulell extends JPanel {
 
@@ -31,9 +30,6 @@ public class Taulell extends JPanel {
     private boolean aturar, sortir;
     protected Robot rob;
 
-    public Taulell() {
-        initComponents();
-    }
 
     public Taulell(int size, boolean tipo) {
         initComponents();
@@ -51,6 +47,7 @@ public class Taulell extends JPanel {
                 x = (i * 50) + 1;
                 y = (j * 50) + 1;
                 caselles[i][j].setBounds(x, y, 49, 49);
+                caselles[i][j].setLocation(i*50+141, j*50+0);
                 this.add(caselles[i][j]);
             }
         }
@@ -157,30 +154,30 @@ public class Taulell extends JPanel {
                     if (((rob.getSensor(0) == 1 || rob.getSensor(7) == 1) && rob.getSensor(1) == 0)
                             && !(rob.getSensor(0) == 1 && rob.getSensor(6) == 1 && rob.getSensor(7) == 0 && movAnt == 'N')
                             && (movAnt == 'N' || movAnt == 'E' || (movAnt == 'O' && rob.getSensor(5) == 1 && rob.getSensor(7) == 1) || (movAnt == 'S' && rob.getSensor(3) == 1 && rob.getSensor(5) == 1 && rob.getSensor(7) == 1))) {
-                        rob.setPos(rob.getPosx(), rob.getPosy() - 1); // NORTE
-                        System.out.println("NORTE");
+                        rob.setPos(rob.getPosx(), rob.getPosy() - 1); // NORD
+                        System.out.println("NORD");
                         movAnt = 'N';
 
                     } else if (((rob.getSensor(1) == 1 || rob.getSensor(2) == 1) && rob.getSensor(3) == 0)
                             && !(rob.getSensor(0) == 1 && rob.getSensor(2) == 1 && rob.getSensor(1) == 0 && movAnt == 'E')
                             && !(rob.getSensor(1) == 1 && rob.getSensor(6) == 1 && rob.getSensor(7) == 0 && movAnt == 'N')
                             && (movAnt == 'E' || movAnt == 'S' || (movAnt == 'N' && rob.getSensor(1) == 1) || (movAnt == 'N' && rob.getSensor(2) == 1 && rob.getSensor(6) == 0) || (movAnt == 'O' && rob.getSensor(5) == 1 && rob.getSensor(7) == 1))) {
-                        rob.setPos(rob.getPosx() + 1, rob.getPosy()); // ESTE
-                        System.out.println("ESTE");
+                        rob.setPos(rob.getPosx() + 1, rob.getPosy()); // EST
+                        System.out.println("EST");
                         movAnt = 'E';
 
                     } else if (((rob.getSensor(3) == 1 || rob.getSensor(4) == 1) && rob.getSensor(5) == 0)
                             && !(rob.getSensor(2) == 1 && rob.getSensor(4) == 1 && rob.getSensor(3) == 0 && movAnt == 'S')
                             && (movAnt == 'O' || movAnt == 'S' || (movAnt == 'E' && rob.getSensor(3) == 1) || (movAnt == 'N' && rob.getSensor(1) == 1 && rob.getSensor(7) == 1))) {
-                        rob.setPos(rob.getPosx(), rob.getPosy() + 1); // SUR
-                        System.out.println("SUR");
+                        rob.setPos(rob.getPosx(), rob.getPosy() + 1); // SUD
+                        System.out.println("SUD");
                         movAnt = 'S';
 
                     } else if (((rob.getSensor(5) == 1 || rob.getSensor(6) == 1) && rob.getSensor(7) == 0)
                             && !(rob.getSensor(4) == 1 && rob.getSensor(6) == 1 && rob.getSensor(5) == 0 && movAnt == 'O')
                             && (movAnt == 'N' || movAnt == 'O' || (movAnt == 'S' && rob.getSensor(5) == 1) || (movAnt == 'E' && rob.getSensor(3) == 1))) {
-                        rob.setPos(rob.getPosx() - 1, rob.getPosy()); // OESTE
-                        System.out.println("OESTE");
+                        rob.setPos(rob.getPosx() - 1, rob.getPosy()); // OEST
+                        System.out.println("OEST");
                         movAnt = 'O';
 
                     // casos en que totes les possibilitats de moviment estan tancades
@@ -413,7 +410,7 @@ public class Taulell extends JPanel {
     private void initComponents() {
         setLayout(null);
         setBackground(new java.awt.Color(0, 0, 0));
-        setPreferredSize(new java.awt.Dimension(641, 501));
+        setPreferredSize(new java.awt.Dimension(641, 500));
 
         JPanel panell = new JPanel();
 
@@ -474,8 +471,10 @@ public class Taulell extends JPanel {
         panell.add(botoFun);
         panell.add(botoInfo);
         
-        panell.setSize(140, 500);
-        panell.setLocation(502, 0);
+//        panell.setSize(140, 500); // sim
+//        panell.setLocation(502, 0); // loc
+        panell.setSize(140, 500); // sim
+        panell.setLocation(0, 0); // loc
         add(panell);
 
         btreiniciar.addActionListener(new BotonsListener(this));

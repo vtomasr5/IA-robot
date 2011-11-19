@@ -26,9 +26,6 @@ public class Caselles extends JPanel implements MouseListener {
     private static boolean iniciarRobot = false;
     private boolean ocupada; // estat casella
 
-    public Caselles() {
-    }
-
     public Caselles(Taulell t) {
         initComponents();
         ocupada = false;
@@ -36,6 +33,7 @@ public class Caselles extends JPanel implements MouseListener {
         if (this.taulell.getTipoTablero() == true) {
             addMouseListener(this);
         }
+        this.setLocation(141, 0);
     }
 
     public boolean getEstadocasilla() {
@@ -134,6 +132,5 @@ public class Caselles extends JPanel implements MouseListener {
 
     public static void setCasillaMarcada(int[] aCasillaMarcada) {
         casellaMarcada = aCasillaMarcada;
-
     }
 }
