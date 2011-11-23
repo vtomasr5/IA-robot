@@ -46,13 +46,4 @@ public class Robot {
         posicio_x = x;
         posicio_y = y;
     }
-
-    public void visualitzaSensors() {
-        System.out.print("Sensors: ");
-        for (int i = 0; i < 8; i++) {
-            System.out.print(sensor[i] + " ");
-        }
-        System.out.println("");
-        System.out.println("");
-    }
 }

@@ -135,8 +135,8 @@ public class Taulell extends JPanel {
     }
 
     public void accio() {
-        // movAnt: estat intern o anterior
-        char movAnt = 'E'; // N abans
+        // movAnt: estat intern (anterior)
+        char movAnt = 'E';
         aturar = false;
         sortir = false;
         
@@ -180,7 +180,6 @@ public class Taulell extends JPanel {
                         System.out.println("OEST");
                         movAnt = 'O';
 
-                    // casos en que totes les possibilitats de moviment estan tancades
                     } else if ((rob.getSensor(1) == 1 && rob.getSensor(3) == 1 && rob.getSensor(5) == 1 && rob.getSensor(7) == 1)
                             && (rob.getSensor(0) == 1 || rob.getSensor(2) == 0 || rob.getSensor(4) == 0 || rob.getSensor(6) == 0)
                             && (rob.getSensor(0) == 0 || rob.getSensor(2) == 1 || rob.getSensor(4) == 0 || rob.getSensor(6) == 0)
@@ -195,7 +194,7 @@ public class Taulell extends JPanel {
                          }else {
                              rob.setPos(rob.getPosx(), rob.getPosy() - 1);
                          }
-                         movAnt = 'N'; // N abans.
+                         movAnt = 'N';
                     }
                     analitzarSensors();
                 }
@@ -471,8 +470,6 @@ public class Taulell extends JPanel {
         panell.add(botoFun);
         panell.add(botoInfo);
         
-//        panell.setSize(140, 500); // sim
-//        panell.setLocation(502, 0); // loc
         panell.setSize(140, 500); // sim
         panell.setLocation(0, 0); // loc
         add(panell);
